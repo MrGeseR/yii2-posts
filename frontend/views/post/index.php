@@ -58,12 +58,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="panel panel-warning">
-            <form action="">
-                <div class="panel-heading">
+            <div class="panel-heading">
+                <h3 class="panel-title">
                     Add a tag for this post
-                </div>
-                <div class="panel-body">
+                </h3>
 
+            </div>
+            <form action="">
+
+            <div class="panel-body">
+                    <?php echo '123q'?>
                 </div>
                 <div class="panel-footer">
                     <button class="btn btn-warning" type="submit">Add</button>
