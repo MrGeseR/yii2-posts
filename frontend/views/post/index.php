@@ -21,62 +21,68 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php foreach ($posts as $post): ?>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                    <a href="/post/<?=$post->id?>">
-                        <?= $post->title ?>
-                    </a>
-            </div>
-            <div class="panel-body">
-                <?= $post->description ?>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-sm-2">
-                        Author:
-                        <?= $post->author->username ?>
+    <div class="posts">
+        <?php foreach ($posts as $post): ?>
+            <div class="posts-item">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                            <a href="/post/<?=$post->id?>">
+                                <?= $post->title ?>
+                            </a>
                     </div>
-                    <div class="col-sm-3">
-                        <?php foreach ($post->tags as $tag) :?>
-                            <?= $tag->name ?>
-                        <?php endforeach;?>
-                        <a class="addTag"> + </a>
+                    <div class="panel-body">
+                        <?= $post->description ?>
                     </div>
-                    <div class="col-sm-2">
-                        Created:
-                        <?= date('h:i j-m-y',strtotime($post->created_at)) ?>
-                    </div>
-                    <div class="col-sm-3">
-                        Last update:
-                        <?= date('h:i j-m-y',strtotime($post->updated_at)) ?>
-                    </div>
-                    <div class="col-sm-2">
-                        <a href="/post/<?=$post->id?>">Comments <span class="badge"><?= count($post->comments) ?></span></a>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                Author:
+                                <?= $post->author->username ?>
+                            </div>
+                            <div class="col-sm-3">
+                                <?php foreach ($post->tags as $tag) :?>
+                                    <?= $tag->name ?>
+                                <?php endforeach;?>
+                                <a class="addTag"> + </a>
+                            </div>
+                            <div class="col-sm-2">
+                                Created:
+                                <?= date('h:i j-m-y',strtotime($post->created_at)) ?>
+                            </div>
+                            <div class="col-sm-3">
+                                Last update:
+                                <?= date('h:i j-m-y',strtotime($post->updated_at)) ?>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="/post/<?=$post->id?>">Comments <span class="badge"><?= count($post->comments) ?></span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Add a tag for this post
-                </h3>
+                <div class="addingTag">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Add a tag for this post
+                            </h3>
+                        </div>
 
-            </div>
-            <form action="">
+                        <form action="">
+                            <div class="panel-body">
+                                <?php echo '123q'?>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-warning" type="submit">Add</button>
+                            </div>
+                        </form>
 
-            <div class="panel-body">
-                    <?php echo '123q'?>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                    <button class="btn btn-warning" type="submit">Add</button>
-                </div>
-            </form>
-        </div>
-    <?php endforeach;
-    echo LinkPager::widget([
-        'pagination' => $pages,
-    ]);?>
+            </div>
+        <?php endforeach;
+        echo LinkPager::widget([
+            'pagination' => $pages,
+        ]);?>
+    </div>
 
 </div>
