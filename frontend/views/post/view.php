@@ -41,6 +41,7 @@ $now = new DateTime()
 </div>
 <p>
     <?php if (Yii::$app->user->id === $post->author_id
+        && ((new \DateTime())->diff(new \DateTime($post->created_at))->h === 0)
         && ((new \DateTime())->diff(new \DateTime($post->created_at))->i < 5)
         && !count($post->comments)) : ?>
         <?= Html::a('Update', ['update', 'id' => $post->id], ['class' => 'btn btn-primary']) ?>

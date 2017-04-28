@@ -37,12 +37,6 @@ class PostController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'create_time',
-                'updatedAtAttribute' => 'update_time',
-                'value' => new Expression('NOW()'),
-            ],
         ];
     }
 

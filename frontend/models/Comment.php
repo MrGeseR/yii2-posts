@@ -73,4 +73,11 @@ class Comment extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Post::className(), ['id' => 'post_id']);
     }
+
+    public function afterSave($insert, $changedAttributes){
+        parent::afterSave($insert, $changedAttributes);
+        $post = Post::find()->where(['id' => $this->post_id])->one();
+        $post->touch('updated_at');
+    }
+
 }
